@@ -1,0 +1,44 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.kick.co/ai/permissions-and-security.md
+docs: https://docs.kick.co/ai/developer-tools/mcp/mcp-reference.md
+summary:
+  types: [oauth2, http]
+  http_schemes: [bearer]
+  oauth2_flows: [authorizationCode]
+  notes: >-
+    Programmatic access (MCP server + CLI) authenticates with either OAuth 2.1 or a
+    Personal Access Token bearer credential. There is no public OpenAPI, so schemes
+    are captured from the OAuth well-known metadata and the published auth docs.
+schemes:
+- name: OAuth2
+  type: oauth2
+  flow: authorizationCode
+  authorizationUrl: https://use.kick.co/mcp/oauth/authorize
+  tokenUrl: https://use.kick.co/mcp/oauth/token
+  registrationUrl: https://use.kick.co/mcp/oauth/register
+  revocationUrl: https://use.kick.co/mcp/oauth/revoke
+  pkce: S256
+  dynamic_client_registration: true
+  scopes: [mcp:read, mcp:write]
+  access_token_lifetime_seconds: 3600
+  sources: [https://use.kick.co/.well-known/oauth-authorization-server]
+- name: PersonalAccessToken
+  type: http
+  scheme: bearer
+  token_prefix: kick_pat_
+  header: "Authorization: Bearer [example key]"
+  used_by: [cli, mcp]
+  notes: >-
+    Prefer read-only PATs; bind to the narrowest workspace; use short expirations
+    for CI/scripts/agents; revoke when no longer needed.
+  sources: [https://docs.kick.co/ai/permissions-and-security.md]
+authorization_model: >-
+  MCP and CLI requests go through Kick's normal backend authorization path — token
+  scope, workspace scope, route policy, and controller-level permission checks —
+  before any read or write. Tool annotations shown to clients are hints, not the
+  source of authorization; the server decides what a credential can do.
+external:
+- provider: Plaid
+  purpose: Bank/financial-institution connection; Kick never sees or stores end-user bank login credentials.
+  source: https://docs.kick.co/reference/security.md
