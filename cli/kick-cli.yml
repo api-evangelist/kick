@@ -1,0 +1,29 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.kick.co/ai/developer-tools/cli/install-the-kick-cli.md
+cli:
+  name: Kick CLI
+  command: kick
+  docs: https://docs.kick.co/ai/developer-tools/cli/install-the-kick-cli.md
+  package: "@kickfinance/cli"      # see packages/kick-packages.yml
+  requires: Node.js LTS + npm
+install:
+- method: npm-global
+  command: npm install -g @kickfinance/cli
+- method: npx
+  command: npx @kickfinance/cli --help
+- method: monorepo-build
+  command: npm run build --workspace @kickfinance/cli
+auth:
+- method: interactive
+  command: kick login
+- method: pat
+  description: Set a personal access token (kick_pat_...) via the KICK_PAT environment variable for scripts and agent workflows.
+  env: KICK_PAT
+notes: >-
+  The Kick CLI runs Kick workflows (transactions, reports, review, categorization)
+  from a terminal, script, or agent, executing against the same Kick REST API and
+  backend authorization path as the MCP server and web app. A full grouped command
+  roster was not enumerated in the public install docs beyond `kick --help`,
+  `kick login`; this artifact records the install/auth surface verbatim and does
+  not invent command names.

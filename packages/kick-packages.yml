@@ -1,0 +1,20 @@
+generated: '2026-07-19'
+method: searched
+source: https://www.npmjs.com/package/@kickfinance/cli
+packages:
+- language: javascript
+  registry: npm
+  name: "@kickfinance/cli"
+  version: 0.2.0
+  url: https://www.npmjs.com/package/@kickfinance/cli
+  install: npm install -g @kickfinance/cli
+  description: Kick command-line interface (the `kick` command) for running Kick workflows from a terminal, script, or agent.
+  official: true
+  kind: cli
+notes: >-
+  Only one first-party package was found: the Kick CLI on npm (@kickfinance/cli,
+  distributed under the @kickfinance scope). No first-party client SDK library was
+  published on npm, PyPI, Maven Central, NuGet, pkg.go.dev, RubyGems, Packagist, or
+  crates.io as of this pass (@kickfinance/sdk and @kickfinance/mcp return 404).
+  The command surface is catalogued in cli/kick-cli.yml; Kick exposes agent access
+  primarily via its hosted MCP server (mcp/kick-mcp.yml), not a language SDK.

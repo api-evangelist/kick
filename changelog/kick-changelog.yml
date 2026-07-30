@@ -1,0 +1,39 @@
+generated: '2026-07-19'
+method: searched
+source: https://www.kick.co/changelog
+scheme: dated               # no semantic version scheme; entries are dated feature releases
+current: null
+entries:
+- date: '2026-07-02'
+  title: Automated invoice and bill reconciliation
+  type: addition
+  highlight: Kick matches invoices and bills to transactions automatically without manual intervention.
+- date: '2026-05-21'
+  title: Kick MCP
+  type: addition
+  highlight: Comprehensive accounting tools for AI agents to scale judgement across Claude, ChatGPT, and other platforms.
+- date: '2026-03-11'
+  title: Performance Reporting
+  type: addition
+  highlight: Fast, customizable reporting with breakdowns by class, entity, and custom periods plus vendor expense tracking.
+- date: '2025-11-25'
+  title: Journal entry editor
+  type: addition
+  highlight: Spreadsheet-style editor supporting recurring entries, automated reversals, and in-cell calculations.
+- date: '2025-11-07'
+  title: 'Launch Week Day 5: Classes'
+  type: addition
+  highlight: Custom Classes with subclasses and rules for organizing books by location, department, or business unit.
+- date: '2025-11-06'
+  title: 'Launch Week Day 4: Views'
+  type: addition
+  highlight: Customizable transaction tabs with saved views, keyboard shortcuts, and multi-window support.
+- date: '2025-11-05'
+  title: 'Launch Week Day 3: Importer'
+  type: addition
+  highlight: Upload CSVs or PDFs to automatically extract and transform transactions into accounting entries.
+- date: '2025-11-04'
+  title: 'Launch Week Day 2: Clients tab'
+  type: addition
+  highlight: Command center for accountants managing multiple Kick clients with consolidated billing.
+notes: Recent-window capture; the live changelog at https://www.kick.co/changelog is the source of truth.

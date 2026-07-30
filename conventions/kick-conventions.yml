@@ -1,0 +1,51 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.kick.co/ai/developer-tools/mcp/tool-reference.md
+scope: >-
+  Cross-cutting request/response semantics for Kick's programmatic surface (hosted
+  MCP server + CLI, both executing against the Kick REST API). Kick publishes no
+  public OpenAPI, so these are captured from the MCP Tool Reference.
+authentication:
+  style: oauth2-or-pat-bearer
+  detail: See authentication/kick-authentication.yml. OAuth scopes mcp:read / mcp:write.
+write_confirmation:
+  model: preview-first
+  detail: >-
+    Write tools are two-phase. Call without a confirmationToken to get a preview
+    object plus a fresh single-use token; re-call with the identical input plus the
+    returned confirmationToken to execute. Tokens are bound to the exact input and
+    must not be reused or invented.
+  note: >-
+    This is a human-in-the-loop confirmation gate, NOT an idempotency-key retry
+    contract; Kick does not document an idempotency key, so no Idempotency pointer
+    is emitted.
+pagination:
+  styles:
+  - name: page-cursor
+    description: 1-based string cursor ("1", "2", ...). Used by most list endpoints.
+  - name: offset-cursor
+    description: 0-based string cursor ("0", "100", ...). Used by accounting, rule transactions, and similar endpoints.
+  default_limit: 25
+  max_limit: 100
+  response_fields: [rows, fields, total, hasMore, nextCursor]
+  note: nextCursor is null when there is no more data; some tools use domain-specific keys (e.g. counterparties, workspaces) instead of rows.
+list_envelope:
+  shape: '{ operation, rows, fields, total, hasMore, nextCursor }'
+  fields_projection: The `fields` array projects which columns appear in each row.
+workspace_selection:
+  detail: >-
+    Workspace-scoped tools accept workspaceId. Workspace-bound PATs auto-inject
+    their workspace; the backend injects a default workspaceId only when the
+    credential resolves to exactly one workspace. User-scoped PATs and OAuth tokens
+    should pass workspaceId explicitly.
+audit:
+  detail: PAT and MCP requests are attributed to the connected user/credential; server-side audit records can preserve token context.
+error_envelope:
+  shape: '{ message, statusCode, traceId }'
+  example: '{"message":"Unauthorized","statusCode":401,"traceId":"..."}'
+  source: observed on https://use.kick.co/mcp (401 without credentials)
+cross_reference:
+  authentication: authentication/kick-authentication.yml
+  scopes: scopes/kick-scopes.yml
+  lifecycle: lifecycle/kick-lifecycle.yml
+  mcp: mcp/kick-mcp.yml

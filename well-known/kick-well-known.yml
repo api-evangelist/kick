@@ -1,0 +1,25 @@
+generated: '2026-07-19'
+method: searched
+source: https://use.kick.co/.well-known/
+host: https://use.kick.co
+documents:
+- path: /.well-known/oauth-protected-resource   # RFC 9728 — MCP protected resource metadata
+  status: 200
+  file: kick-oauth-protected-resource.json
+- path: /.well-known/oauth-authorization-server  # RFC 8414 — OAuth 2.0 authorization server metadata
+  status: 200
+  file: kick-oauth-authorization-server.json
+- path: /.well-known/openid-configuration        # OIDC discovery — not published (SPA soft-404, HTML)
+  status: 404
+- path: /.well-known/security.txt                # RFC 9116 — not published (SPA soft-404, HTML)
+  status: 404
+- path: /.well-known/api-catalog                 # RFC 9727 — not published (SPA soft-404, HTML)
+  status: 404
+- path: /.well-known/ai-plugin.json              # not published (SPA soft-404, HTML)
+  status: 404
+notes: >-
+  use.kick.co returns an HTTP 200 SPA shell for unknown /.well-known/ paths, so
+  only the two OAuth documents returning real application/json (verified by
+  content-type and parseable body) are treated as present. The OAuth metadata
+  scopes the Kick MCP server at https://use.kick.co/mcp. The kick.co and
+  docs.kick.co hosts return 404 for all probed /.well-known/ paths.

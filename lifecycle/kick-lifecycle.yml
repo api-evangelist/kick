@@ -1,0 +1,18 @@
+generated: '2026-07-19'
+method: searched
+source: https://status.kick.co/
+versioning:
+  scheme: dated-releases      # feature releases tracked via the dated changelog; no public API version scheme
+  changelog: https://www.kick.co/changelog
+deprecation:
+  policy_url: null            # no published deprecation/sunset policy found
+  sunset_header: null
+sla:
+  url: null
+status_page: https://status.kick.co/
+deprecated_operations: []
+notes: >-
+  Kick publishes a public status page and a dated changelog. No formal API
+  versioning policy, deprecation/sunset policy, or SLA/uptime commitment was found
+  on the public surface. Kick has no public OpenAPI from which to derive deprecated
+  operations.

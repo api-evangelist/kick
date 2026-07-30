@@ -1,0 +1,164 @@
+generated: '2026-07-19'
+method: searched
+status: published
+source: https://docs.kick.co/ai/developer-tools/mcp/tool-reference.md
+server:
+  name: Kick
+  transport: http           # Streamable HTTP / Remote MCP
+  url: https://use.kick.co/mcp
+  docs: https://docs.kick.co/ai/developer-tools/mcp/mcp-reference.md
+  launched: '2026-05-21'     # "Kick MCP" changelog entry
+auth:
+  methods:
+  - oauth2                   # OAuth 2.1: DCR + PKCE (S256); metadata at /.well-known/oauth-authorization-server
+  - bearer_pat               # Personal Access Token: "Authorization: Bearer kick_pat_..."
+  oauth:
+    protected_resource_metadata: https://use.kick.co/.well-known/oauth-protected-resource
+    authorization_server_metadata: https://use.kick.co/.well-known/oauth-authorization-server
+    authorization_endpoint: https://use.kick.co/mcp/oauth/authorize
+    token_endpoint: https://use.kick.co/mcp/oauth/token
+    registration_endpoint: https://use.kick.co/mcp/oauth/register
+    revocation_endpoint: https://use.kick.co/mcp/oauth/revoke
+    grant_types: [authorization_code, refresh_token]
+    code_challenge_methods: [S256]
+    access_token_lifetime_seconds: 3600
+  scopes:
+  - name: mcp:read
+    description: Tool discovery and read-only calls.
+  - name: mcp:write
+    description: Tools that can change data (preview-first, confirmation required).
+conventions:
+  write_safety: >-
+    All write tools are preview-first. Call the tool without a confirmationToken to
+    receive a preview object plus a fresh token, then re-call with the identical
+    input plus the returned confirmationToken to execute. Tokens are single-use and
+    bound to the exact input.
+  workspace_selection: >-
+    Workspace-scoped tools accept a workspaceId argument. Workspace-bound PATs
+    auto-inject their workspace; user-scoped PATs and OAuth tokens should pass
+    workspaceId explicitly.
+  backing_api: Every tool executes through the Kick REST API under the same auth, workspace, permission, and audit checks as the web app.
+notes: >-
+  Consolidated tool list — several tools handle multiple actions via an
+  operation/report parameter, and the live list varies by token scope, workspace
+  permissions, and enabled features. Tool names below are captured verbatim from
+  the published Tool Reference; they are not derived from an OpenAPI spec (Kick
+  publishes no public OpenAPI).
+tools:
+- name: context_browse
+  description: List workspaces and entities the credential can access.
+  access: read
+- name: context_resolve
+  description: Resolve a workspace, entity, or ledger by name.
+  access: read
+- name: financial_accounts_query
+  description: List connected financial accounts.
+  access: read
+- name: transactions_query
+  description: Search/read transactions, stats, and suggested transfer/accrual matches.
+  access: read
+- name: transactions_act
+  description: Create, recategorize, split/unsplit, bulk-update, and mark transactions for deletion.
+  access: write
+- name: transactions_transfer_matches_act
+  description: Match or unmatch two transactions as a transfer.
+  access: write
+- name: transactions_document_links_act
+  description: Link or detach documents to/from transactions.
+  access: write
+- name: categories_query
+  description: List/search categories and category spending statistics.
+  access: read
+- name: categories_act
+  description: Create, update, or delete categories.
+  access: write
+- name: classes_query
+  description: List/search classes and class statistics.
+  access: read
+- name: classes_act
+  description: Create, update, or delete classes.
+  access: write
+- name: counterparties_query
+  description: List/search counterparties.
+  access: read
+- name: counterparties_act
+  description: Create, update, delete, merge, or copy global counterparties.
+  access: write
+- name: rules_query
+  description: Inspect categorization rules, rule groups, and affected transactions.
+  access: read
+- name: rules_act
+  description: Create/update/delete rules and rule groups; change priority order.
+  access: write
+- name: accounting_query
+  description: Read accounting defaults, chart of accounts, and trial balance.
+  access: read
+- name: accounting_act
+  description: Modify accounting settings and defaults.
+  access: write
+- name: account_groups_act
+  description: Create/update/delete account groups.
+  access: write
+- name: opening_balances_query
+  description: Read opening balances.
+  access: read
+- name: opening_balances_act
+  description: Set or remove opening balances.
+  access: write
+- name: journals_query
+  description: Read journal entries.
+  access: read
+- name: journals_act
+  description: Create or update journal entries.
+  access: write
+- name: reports_query
+  description: Run reports (P&L, balance sheet, cash flow, expenses by vendor, top transactions).
+  access: read
+- name: documents_query
+  description: Search documents and read document metadata.
+  access: read
+- name: documents_download
+  description: Download a document file.
+  access: read
+- name: documents_act
+  description: Request/confirm document uploads.
+  access: write
+- name: entities_query
+  description: Read entities in a workspace.
+  access: read
+- name: entities_act
+  description: Create or update entities.
+  access: write
+- name: activity_query
+  description: Read the workspace activity log.
+  access: read
+- name: activity_undo
+  description: Undo a previous action from the activity log.
+  access: write
+- name: tasks_query
+  description: Read team tasks and requests.
+  access: read
+- name: tasks_act
+  description: Create or update tasks.
+  access: write
+- name: organization_clients_create
+  description: Create a new client workspace under a firm/organization.
+  access: write
+- name: invoices_create
+  description: Create invoices.
+  access: write
+- name: invoices_update
+  description: Update invoices.
+  access: write
+- name: bills_create
+  description: Create bills.
+  access: write
+- name: bills_update
+  description: Update bills.
+  access: write
+- name: list_kick_skills
+  description: List Kick's own packaged agent skills available through MCP.
+  access: read
+- name: load_kick_skill
+  description: Load a Kick packaged agent skill for the agent to follow.
+  access: read

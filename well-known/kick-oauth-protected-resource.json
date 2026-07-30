@@ -1,0 +1,1 @@
+{"resource":"https://use.kick.co/mcp","authorization_servers":["https://use.kick.co"],"bearer_methods_supported":["header"],"scopes_supported":["mcp:read","mcp:write"],"resource_documentation":"https://use.kick.co/mcp","issuer":"https://use.kick.co","registration_endpoint":"https://use.kick.co/mcp/oauth/register"}

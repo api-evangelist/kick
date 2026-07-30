@@ -1,0 +1,27 @@
+generated: '2026-07-19'
+method: searched
+source: https://use.kick.co/.well-known/oauth-authorization-server
+docs: https://docs.kick.co/ai/permissions-and-security.md
+schemes:
+- name: OAuth2
+  source: https://use.kick.co/.well-known/oauth-authorization-server
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://use.kick.co/mcp/oauth/authorize
+    tokenUrl: https://use.kick.co/mcp/oauth/token
+    registrationUrl: https://use.kick.co/mcp/oauth/register
+    code_challenge_methods: [S256]
+scopes:
+- scope: mcp:read
+  description: Tool discovery and read-only calls against the Kick MCP server.
+  flows: [authorizationCode]
+  sources: [https://use.kick.co/.well-known/oauth-authorization-server]
+- scope: mcp:write
+  description: Tools that can change data; write tools are preview-first and require explicit confirmation.
+  flows: [authorizationCode]
+  sources: [https://use.kick.co/.well-known/oauth-authorization-server]
+notes: >-
+  Scopes are those advertised for the Kick MCP OAuth surface (RFC 8414 metadata +
+  the Permissions and Security docs). Kick has no public OpenAPI, so scopes are not
+  derived per-operation; the two coarse MCP scopes gate read vs. write across the
+  full tool roster.
