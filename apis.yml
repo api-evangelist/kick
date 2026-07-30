@@ -1,8 +1,16 @@
 aid: kick
 name: Kick
-description: Kick is a company surfaced as a portfolio company of felicis, general-catalyst and added
-  to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment
-  pipeline.
+description: >-
+  Kick is a self-driving, agentic bookkeeping platform for business owners and
+  accounting firms — "an agentic ledger that does your books with you." It
+  auto-categorizes bank and card transactions in real time (via Plaid), surfaces
+  commonly missed deductions, supports customizable categorization rules, classes,
+  multi-entity journal entries, reconciliation, and tax-ready financials (P&L,
+  balance sheet, cash flow, tax package). Kick exposes a hosted, OAuth-secured
+  Model Context Protocol (MCP) server at use.kick.co/mcp and a first-party CLI
+  (@kickfinance/cli), letting AI agents in Claude, ChatGPT, and Gemini query and
+  safely write to the books with preview-first confirmation. Backed by Felicis and
+  General Catalyst.
 url: https://raw.githubusercontent.com/api-evangelist/kick/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -11,12 +19,46 @@ x-backed-by:
 - general-catalyst
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://use.kick.co/favicon.png
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
 - Company
-apis: []
+- Bookkeeping
+- Accounting
+- Finance
+- FinTech
+- MCP
+- AI Agents
+- Small Business
+apis:
+- name: Kick MCP & REST API
+  description: >-
+    Kick's programmatic surface — a hosted MCP server and CLI executing against the
+    Kick REST API under the same auth, workspace, permission, and audit checks as
+    the web app. No public OpenAPI is published.
+  humanURL: https://docs.kick.co/
+  baseURL: https://use.kick.co
+  properties:
+  - type: MCPServer
+    url: mcp/kick-mcp.yml
+  - type: Documentation
+    url: https://docs.kick.co/
+  - type: APIReference
+    url: https://docs.kick.co/ai/developer-tools/mcp/tool-reference.md
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -24,4 +66,59 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
-  url: https://kick.co
+  url: https://www.kick.co
+- type: DeveloperPortal
+  url: https://docs.kick.co/
+- type: Documentation
+  url: https://docs.kick.co/
+- type: APIReference
+  url: https://docs.kick.co/ai/developer-tools/mcp/tool-reference.md
+- type: Quickstart
+  url: https://docs.kick.co/ai/mcp/mcp-quickstart.md
+- type: Blog
+  url: https://www.kick.co/resources
+- type: Pricing
+  url: https://www.kick.co/pricing
+- type: SignUp
+  url: https://use.kick.co/register
+- type: Login
+  url: https://use.kick.co/login
+- type: Support
+  url: https://docs.kick.co/troubleshooting/contact-us
+- type: TermsOfService
+  url: https://www.kick.co/legal#terms-of-service
+- type: PrivacyPolicy
+  url: https://www.kick.co/legal#privacy
+- type: StatusPage
+  url: https://status.kick.co/
+- type: ChangeLog
+  url: https://www.kick.co/changelog
+- type: MCPServer
+  url: mcp/kick-mcp.yml
+- type: CLI
+  url: cli/kick-cli.yml
+- type: Packages
+  url: packages/kick-packages.yml
+- type: WellKnown
+  url: well-known/kick-well-known.yml
+- type: OAuthScopes
+  url: scopes/kick-scopes.yml
+- type: Authentication
+  url: authentication/kick-authentication.yml
+- type: Conventions
+  url: conventions/kick-conventions.yml
+- type: ChangeLog
+  url: changelog/kick-changelog.yml
+- type: Lifecycle
+  url: lifecycle/kick-lifecycle.yml
+- type: Conformance
+  url: conformance/kick-conformance.yml
+- type: LLMsTxt
+  url: llms/kick-llms.txt
+- type: DomainSecurity
+  url: security/kick-domain-security.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence
