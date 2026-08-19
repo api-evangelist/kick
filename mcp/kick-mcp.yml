@@ -4,14 +4,14 @@ status: published
 source: https://docs.kick.co/ai/developer-tools/mcp/tool-reference.md
 server:
   name: Kick
-  transport: http           # Streamable HTTP / Remote MCP
+  transport: http
   url: https://use.kick.co/mcp
   docs: https://docs.kick.co/ai/developer-tools/mcp/mcp-reference.md
-  launched: '2026-05-21'     # "Kick MCP" changelog entry
+  launched: '2026-05-21'
 auth:
   methods:
-  - oauth2                   # OAuth 2.1: DCR + PKCE (S256); metadata at /.well-known/oauth-authorization-server
-  - bearer_pat               # Personal Access Token: "Authorization: Bearer kick_pat_..."
+  - oauth2
+  - bearer_pat
   oauth:
     protected_resource_metadata: https://use.kick.co/.well-known/oauth-protected-resource
     authorization_server_metadata: https://use.kick.co/.well-known/oauth-authorization-server
@@ -19,8 +19,11 @@ auth:
     token_endpoint: https://use.kick.co/mcp/oauth/token
     registration_endpoint: https://use.kick.co/mcp/oauth/register
     revocation_endpoint: https://use.kick.co/mcp/oauth/revoke
-    grant_types: [authorization_code, refresh_token]
-    code_challenge_methods: [S256]
+    grant_types:
+    - authorization_code
+    - refresh_token
+    code_challenge_methods:
+    - S256
     access_token_lifetime_seconds: 3600
   scopes:
   - name: mcp:read
@@ -28,21 +31,16 @@ auth:
   - name: mcp:write
     description: Tools that can change data (preview-first, confirmation required).
 conventions:
-  write_safety: >-
-    All write tools are preview-first. Call the tool without a confirmationToken to
-    receive a preview object plus a fresh token, then re-call with the identical
-    input plus the returned confirmationToken to execute. Tokens are single-use and
-    bound to the exact input.
-  workspace_selection: >-
-    Workspace-scoped tools accept a workspaceId argument. Workspace-bound PATs
-    auto-inject their workspace; user-scoped PATs and OAuth tokens should pass
-    workspaceId explicitly.
-  backing_api: Every tool executes through the Kick REST API under the same auth, workspace, permission, and audit checks as the web app.
-notes: >-
-  Consolidated tool list — several tools handle multiple actions via an
-  operation/report parameter, and the live list varies by token scope, workspace
-  permissions, and enabled features. Tool names below are captured verbatim from
-  the published Tool Reference; they are not derived from an OpenAPI spec (Kick
+  write_safety: All write tools are preview-first. Call the tool without a confirmationToken to receive
+    a preview object plus a fresh token, then re-call with the identical input plus the returned confirmationToken
+    to execute. Tokens are single-use and bound to the exact input.
+  workspace_selection: Workspace-scoped tools accept a workspaceId argument. Workspace-bound PATs auto-inject
+    their workspace; user-scoped PATs and OAuth tokens should pass workspaceId explicitly.
+  backing_api: Every tool executes through the Kick REST API under the same auth, workspace, permission,
+    and audit checks as the web app.
+notes: Consolidated tool list — several tools handle multiple actions via an operation/report parameter,
+  and the live list varies by token scope, workspace permissions, and enabled features. Tool names below
+  are captured verbatim from the published Tool Reference; they are not derived from an OpenAPI spec (Kick
   publishes no public OpenAPI).
 tools:
 - name: context_browse
@@ -162,3 +160,10 @@ tools:
 - name: load_kick_skill
   description: Load a Kick packaged agent skill for the agent to follow.
   access: read
+deployment:
+  mode: remote
+  endpoint: https://use.kick.co/mcp
+  verified: probed
+  probe: gated
+  checked: '2026-08-12'
+  source: catalog MCP census
