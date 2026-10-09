@@ -167,3 +167,20 @@ deployment:
   probe: gated
   checked: '2026-08-12'
   source: catalog MCP census
+rfc9728:
+  endpoint: https://use.kick.co/mcp
+  metadata_url: https://use.kick.co/.well-known/oauth-protected-resource
+  discovered_via: WWW-Authenticate resource_metadata on an anonymous POST initialize
+  fetched: '2026-09-25'
+  http_status: 200
+  content_type: application/json
+  document:
+    resource: https://use.kick.co/mcp
+    authorization_servers:
+    - https://use.kick.co
+    scopes_supported:
+    - mcp:read
+    - mcp:write
+    bearer_methods_supported:
+    - header
+    resource_documentation: https://use.kick.co/mcp
