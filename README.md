@@ -64,6 +64,108 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Kick is a company surfaced as a portfolio company of felicis, general-catalyst and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+Kick is a self-driving, agentic bookkeeping platform for business owners and accounting firms — "an agentic ledger that does your books with you." It auto-categorizes bank and card transactions in real time (via Plaid), surfaces commonly missed deductions, supports customizable categorization rules, classes, multi-entity journal entries, reconciliation, and tax-ready financials (P&L, balance sheet, cash flow, tax package). Kick exposes a hosted, OAuth-secured Model Context Protocol (MCP) server at use.kick.co/mcp and a first-party CLI (@kickfinance/cli), letting AI agents in Claude, ChatGPT, and Gemini query and safely write to the books with preview-first confirmation. Backed by Felicis and General Catalyst.
 
-Backed by: felicis, general-catalyst — https://kick.co
+**Areas:** Company · Bookkeeping · Accounting · Finance · Fintech · MCP · AI Agents · Small Business
+
+## Kick on APIs.io
+
+Everything profiled for Kick is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/kick/](https://apis.io/providers/kick/)** — or go straight to one of the APIs or properties below.
+
+### APIs (1)
+
+- [Kick MCP & REST API](https://apis.io/apis/kick/kick-mcp-rest-api/) — Kick's programmatic surface — a hosted MCP server and CLI executing against the Kick REST API under the same auth, workspace, permission, and audit checks…
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [Kick](https://apis.io/servers/kick/kick/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Kick Authentication](https://apis.io/security/kick/kick-authentication/)
+- [Kick Domain Security](https://apis.io/security/kick/kick-domain-security/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Kick Scopes](https://apis.io/scopes/kick/kick-scopes/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.kick.co)
+- [Documentation](https://docs.kick.co/)
+- [API reference](https://docs.kick.co/ai/developer-tools/mcp/tool-reference.md)
+- [Pricing](https://www.kick.co/pricing)
+- [Sign up](https://use.kick.co/register)
+- [Support](https://docs.kick.co/troubleshooting/contact-us)
+- [Changelog](https://www.kick.co/changelog)
+- [Blog](https://www.kick.co/resources)
+- [Terms of service](https://www.kick.co/legal#terms-of-service)
+- [Privacy policy](https://www.kick.co/legal#privacy)
+- [Status](https://status.kick.co/)
+
+## API Evangelist rating
+
+**Kin Score 37.2** — thin · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 75.0 |
+| Contract quality | 0.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 31.6 |
+| Developer ergonomics | 64.3 |
+| Access clarity | 38.2 |
+
+**Agent readiness 27.3** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | verified |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
+
+**Regulatory alignment 34.3** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/kick/](https://apis.io/providers/kick/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Kick: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/kick/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
